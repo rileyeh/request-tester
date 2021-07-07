@@ -8,7 +8,7 @@ jobs:
   log-info: 
     runs-on: ubuntu-latest
     steps: 
-      -  run: echo ${{github.event.issue.labels}}
+      -  run: echo ${{github.event.issue.labels.*.name}}
       
   add-bug-card:
     if: contains(github.event.issue.labels.*.name, 'bug')
