@@ -5,6 +5,11 @@ on:
     types: [opened]
 
 jobs:
+  log-info: 
+    runs-on: ubuntu-latest
+    steps: 
+      -  run: echo ${{github.event.issue.labels}}
+      
   add-bug-card:
     if: contains(github.event.issue.labels.*.name, 'bug')
     runs-on: ubuntu-latest
@@ -14,7 +19,7 @@ jobs:
           project: Bugs
           column: Needs triage
           repo-token: ${{ secrets.GHPROJECT_TOKEN }}
-  
+
   add-feature-card:
     if: contains(github.event.issue.labels.*.name, 'feature-request')
     runs-on: ubuntu-latest
